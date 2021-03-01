@@ -5,7 +5,7 @@ This repository is the for documentation and support of the [Visma.net Employee 
 ## Resources
 
 - [Visma for Developers](https://developer.visma.com/api/visma.net-employee-api/) (General information and sign up for access)
-- [Open API documentation](https://docs.api.employee.core.hrm.visma.net/)
+- [Open API documentation](https://docs.employeeapi.employeecore.hrm.visma.net)
 - [Changelog](TBA)
 - [Frequently asked questions](FAQ.md)
 
