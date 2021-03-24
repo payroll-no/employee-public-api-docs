@@ -14,7 +14,7 @@ On this page you will find some of the more common Q&A’s, the target demograph
   activeStart and activeEnd are date items expressed as string values. 
   <ul>
   <li>activeStart - is a date value indicating when value takes effect/ becomes active</li>
-  <li>activeEnd - is a date value indicating when value takes effect/ becomes active</li> 
+  <li>activeEnd - is a date value indicating when value losses effect or becomes inactive</li> 
   </ul></br>
   In order to correctly update a value with timeline support, activeEnd needs to be defined for current active value. New value has to have activeStart defined.  
 
