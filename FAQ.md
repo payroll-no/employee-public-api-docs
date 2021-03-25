@@ -28,17 +28,23 @@ Examples of timeline usage
       }
     ]
     ```
-2. Employee with current salary (valid untill April 30th, 2021) and a new salary that will become in effect starting with May 1st, 2021
+2. Assuming that it is March, 2021, employee with current salary (valid untill April 30th, 2021) and a new salary that will become in effect starting with May 1st, 2021
     ```json
     "salaryInformation": [
       {
         "salaryType": "Period",
-        "monthlySalary": "4000",
-        "activeEnd": "2021-04-30"
+         "monthlySalary": "3000", //Historic value that was active untill December 13th, 2020
+         "activeEnd": "2020-12-13"
       },
       {
         "salaryType": "Period",
-        "monthlySalary": "5000",
+        "monthlySalary": "4000", //Currently active timeline value assuming that it is March, 2021
+        "activeStart": "2020-12-14",  
+        "activeEnd": "2021-04-30" //Current value will expire in the end of April 
+      },
+      {
+        "salaryType": "Period",
+        "monthlySalary": "5000", //Future timeline value
         "activeStart": "2021-05-01"
       }
     ]
