@@ -6,16 +6,15 @@ On this page you will find some of the more common Q&A’s, the target demograph
   Visma.net Employee API supports objects that can have multiple values in different time frames, called timelines.  
   Timeline is an option to manage historic, current and future values for various supported objects or values.</br>
   When retreiving data, without any filters, you will always see 
-  <ul>
-  <li>historic values - values that have been defined in the past (in case there have been changes)</li>
-  <li>active (current) values in effect today</li> 
-  <li>future values - values that will be applied in the future (in case have been defined)</li></br>
-  </ul></br>
+  - historic values - values that have been defined in the past (in case there have been changes)</li>
+  - active (current) values in effect today</li> 
+  - future values - values that will be applied in the future (in case have been defined)</li></br>
+  </br>
   activeStart and activeEnd are date items expressed as string values. 
-  <ul>
-  <li>activeStart - is a date value indicating when value takes effect/ becomes active</li>
-  <li>activeEnd - is a date value indicating when value losses effect or becomes inactive</li> 
-  </ul></br>
+  
+  - activeStart - is a date value indicating when value takes effect/ becomes active. Null means infinity. From what date this configuration of the value is active.</li>
+  - activeEnd - is a date value indicating when value losses effect or becomes inactive. Null means infinity. To what date this configuration of the value is active</li> 
+  </br>
   In order to correctly update a value with timeline support, activeEnd needs to be defined for current active value. New value has to have activeStart defined.  
 
 Examples of timeline usage
