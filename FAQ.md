@@ -48,8 +48,8 @@ Examples of timeline usage
       }
     ]
     ```
-  Timelines cannot have overlapping periods and cannot have gaps. One value ends on a certain date, the new value has to start with the next day. </br>
-  **Exceptions**:
+  Some objects can have overlapping periods and/or can gaps.
+  **Examples**:
   1. Pensions is an exception where there can be multiple pensions defined for an employee, where timeline can overlap. 
   2. Postitions is an object that can have gaps in timeline. When position ends, employee's employment is terminated. Employee later can be rehired which creates a gap in a timeline.
   
