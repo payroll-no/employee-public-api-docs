@@ -2,6 +2,86 @@
 
 On this page you will find some of the more common Q&A’s, the target demographic is developers integrating with the Employee API.
 
+## Minimal set of mandatory fields for POST /employees/withPosition
+Mandatory fields can vary based on the data that you choose to provide when creting an employee. 
+You will always have to provide data on top level of Employee profile for the following properties:
+```json
+  {
+  "number": "",
+  "personNames": [
+    {
+      "firstName": "",
+      "lastName": ""
+    }
+  ],
+  "personIds": [],
+  "dateOfBirth": "",
+  "address": {
+    "countryCode": ""
+  },
+  "salaryPaymentMethod": {},
+  "positions": [
+    {
+      "typeOfPosition": "",
+      "employmentForm": [],
+      "typeOfWork": [],
+      "workTimeAgreement": [],
+      "partTimeFactors": [],
+      "salaryInformation": [],
+      "taxUnitIds": [],
+      "activeStart": ""
+    }
+  ]
+}
+  ```
+
+### Sample payload with minimal set of mandatory fields used for POST /employees/withPosition
+```json
+{
+  "number": "1230",
+  "personNames": [
+    {
+      "firstName": "Robert",
+      "lastName": "Trully"
+    }
+  ],
+  "personIds": [{
+      "typeOfId": "DNumber",
+      "id": "67024795818"
+    }],
+  "dateOfBirth": "1983-03-14",
+  "address": {
+    "countryCode": "NO"
+  },
+  "salaryPaymentMethod": {"paymentType": "cash"},
+  "positions": [
+    {
+      "typeOfPosition": "Ordinary",
+      "employmentForm": [{
+          "value": "fast"
+        }],
+      "typeOfWork": [{
+          "value": "1233101"
+        }],
+      "workTimeAgreement": [{
+          "value": "97534137-ece1-49fc-b01c-05f4f7f69bc8/517a2a52-d95f-28f7-7c18-40441ce78466/0"
+        }],
+      "partTimeFactors": [{
+          "value": 100
+        }],
+      "salaryInformation": [{
+          "salaryType": "Period",
+          "monthlySalary": "1000"
+        }],
+      "taxUnitIds": [{
+          "value": "2"
+        }],
+      "activeStart": "2020-02-02"
+    }
+  ]
+}
+
+
 ## What are ojects that support timelines? 
   Visma.net Employee API supports objects that can have multiple values in different time frames, called timelines.  
   Timeline is an option to manage historic, current and future values for various supported objects or values.</br>
