@@ -1,4 +1,10 @@
 # API changelog
+## 21.7.0.0 (2021-07-01)
+- API version 1.0.0 has been released! 
+  - /v1 is the API version used in endpoint URIs.
+  - "Location" response header value now, by default, points to /v1 enpoints.
+  - /v0 is still compatible and requests will be redirected to /v1 endpoints. We recommend to move to /v1 enpoints as soon as possible. 
+
 ## 21.6.47.0 (2021-06-30)
 - In order to align with Visma.net Payroll API we are updating the job execution status for successfully executed jobs.
   - Currently: Successful job value in response for "status": "Done"
