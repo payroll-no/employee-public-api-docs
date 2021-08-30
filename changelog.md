@@ -1,4 +1,63 @@
 # API changelog
+## 21.08.28 (2021-08-28)
+- Version 1.0.1 is here and with it, API now supports optional sub-resource embedding and partial responses via filtering. 
+  - ### Support for optional embedding of sub-resources. 
+    Embedding related resources (also know as Resource expansion) is a great way to reduce the number of requests. Embedding a sub-resource can possibly look like this where an employee resource has its position items as sub-resource (`/employees?embed=(positions)`):
+    ```
+    GET /employees?embed=(positions)
+        {
+        "data": [
+            {
+              "id": "1000000-0000-0000-0000-000000000",
+              "number": "99-1",
+              ...,
+              "_embedded": {
+                "positions": [
+                  {
+                    "id": "2000000-0000-0000-0000-000000000",
+                    "activeStart": "2020-02-02",
+                    "typeOfPosition": "Ordinary",
+                    ...
+                  }
+                ]
+              }
+            }
+          ]
+        }
+    ```
+  - ### Support for Partial responses via filtering for embedded Position entity. 
+    Depending on your use case and payload size, you can significantly reduce network bandwidth need by supporting filtering of returned entity fields.
+  
+    With this versions we support filtering of embedded `positions` entity's `id`, `activeStart` and `activeEnd` fields. Support for filtering by other fields will be added with future versions. 
+
+    ```
+    GET /employees?embed=(positions)&fields=(positions(id,activeStart,activeEnd))
+
+        {
+        "data": [
+            {
+              "id": "1000000-0000-0000-0000-000000000",
+              "number": "99-1",
+              ...,
+              "_embedded": {
+                "positions": [
+                  {
+                    "id": "1yy0000-0000-0000-0000-000000000",
+                    "activeStart": "2020-02-02",
+                    "activeEnd": "2021-08-29"
+                  },
+                  {
+                    "id": "1xx0000-0000-0000-0000-000000000",
+                    "activeStart": "2021-08-30"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+    ```
+  
+
 ## 21.7.0.0 (2021-07-01)
 - API version 1.0.0 has been released! 
   - /v1 is the API version used in endpoint URIs.
