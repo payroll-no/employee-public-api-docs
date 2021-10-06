@@ -1,4 +1,21 @@
 # API changelog
+## 21.10.2.0 (2021-10-06)
+- Last change time stamp has been added to the employee response. Information allows to quickly detect when was the last change made to an employee.
+  - 
+    ```
+    GET /employees
+        {
+        "data": [
+            {
+              "id": "1000000-0000-0000-0000-000000000",
+              ...,
+              "lastChange": "2021-10-06T09:08:24.870Z",
+              ...
+            }
+          ]
+        }
+    ```
+
 ## 21.08.28 (2021-08-28)
 - Version 1.0.1 is here and with it, API now supports optional sub-resource embedding and partial responses via filtering. 
   - ### Support for optional embedding of sub-resources. 
@@ -77,4 +94,4 @@
   - GET /employees - parameter *includeDrafts*. Use to include Draft Employees in request results.
 - Description updates for API methods 
 
-Refer to [OpenAPI Specification](http://docs.employeeapi.employeecore.hrm.visma.net/) for more details. 
+Refer to [OpenAPI Specification](https://employeeapi.employeecore.hrm.visma.net/swag/index.html) for more details. 
