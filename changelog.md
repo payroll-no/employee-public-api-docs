@@ -1,4 +1,42 @@
 # API changelog
+## 21.10.20.0 (2021-10-19)
+- Now you can manage more information with Employee API: redundancy, prepaid sickness and prepaid other sickness fields have now been added to Position endpoint. 
+  - 
+    ```
+    GET /employees/{employeeId}/positions
+        [
+          {
+            "id": "608ef0b3-b4c3-4eed-8885-b81c68c16434",
+            ...
+            "absence": {
+              "prepaidSickness": [
+                {
+                  "value": true,
+                  "activeStart": "2021-10-01",
+                  "activeEnd": "2021-10-10"
+                }
+              ],
+              "prepaidOtherAbsence": [
+                {
+                  "value": true,
+                  "activeStart": "2021-10-21",
+                  "activeEnd": "2021-10-29"
+                }
+              ],
+              "redundancy": [
+                {
+                  "value": "15",
+                  "activeStart": "2021-10-15",
+                  "activeEnd": "2021-10-19"
+                }
+              ]
+            },
+            ...
+          }
+        ]
+    ```
+
+
 ## 21.10.2.0 (2021-10-06)
 - Last change time stamp has been added to the employee response. Information allows to quickly detect when was the last change made to an employee.
   - 
