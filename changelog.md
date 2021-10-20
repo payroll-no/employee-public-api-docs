@@ -1,12 +1,27 @@
 # API changelog
+## 21.10.26.0 (2021-10-20)
+- Support for partial responses via filtering for `employee` entity has been added. Depending on your use case and payload size, you can significantly reduce network bandwidth need by supporting filtering of returned entity fields. 
+
+  With this version we support filtering by `employee` entity's `id` and `lastChange` in format `/employees?fields=(id,lastChange)`. Support for filtering by other fields will be added with future versions. 
+    ```
+    GET /employees?fields=(id,lastChange)
+        {
+          "data": [
+            {
+              "id": "1000000-0000-0000-0000-000000001",
+              "lastChange": "2021-10-18T12:00:35.66Z"
+            }
+          ]
+        }
+    ```
+
 ## 21.10.20.0 (2021-10-19)
 - Now you can manage more information with Employee API: redundancy, prepaid sickness and prepaid other sickness fields have now been added to Position endpoint. 
-  - 
     ```
     GET /employees/{employeeId}/positions
         [
           {
-            "id": "608ef0b3-b4c3-4eed-8885-b81c68c16434",
+            "id": "1000000-0000-0000-0000-000000000",
             ...
             "absence": {
               "prepaidSickness": [
@@ -39,7 +54,6 @@
 
 ## 21.10.2.0 (2021-10-06)
 - Last change time stamp has been added to the employee response. Information allows to quickly detect when was the last change made to an employee.
-  - 
     ```
     GET /employees
         {
