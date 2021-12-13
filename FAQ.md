@@ -64,7 +64,7 @@ You will always have to provide data on top level of Employee profile for the fo
           "value": "1233101"
         }],
       "workTimeAgreement": [{
-          "value": "97534137-ece1-49fc-b01c-05f4f7f69bc8/517a2a52-d95f-28f7-7c18-40441ce78466/0"
+          "value": "0387f476-2471-4816-8b94-cdabb8fe4c21"
         }],
       "partTimeFactors": [{
           "value": 100
