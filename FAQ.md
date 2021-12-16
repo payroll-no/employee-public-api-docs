@@ -2,6 +2,34 @@
 
 On this page you will find some of the more common Q&A’s, the target demographic is developers integrating with the Employee API.
 
+## Working with status code 202 and Jobs
+When a POST or PUT request is accepted, a job is created for background processing. In response header you will find "Location" attribute that contains the uri for the job (path and ID). Until the job has not executed, there is no artifact (employee or position) created.
+Query the location uri to get job details: execution status, message in case of an error and other information.
+Contents of the response:
+- *status*: status of job execution.
+- *artifactId*: ID for the object that is created or updated. In case of succesfull job execution, ID of the object created or updated will be listed here. 
+- *artifactType*: type of the object that is created or updated.
+- *validationResults*: validation result in case there is an issue with the payload data or operation that is being executed. Warning and/or errors with descritpion will be displayed here.There can be one or multiple validation results displayed. 
+- other information 
+
+Example: GET /employees/jobs/xxxxxxxx-80d5-46eb-yyyy-4bc4cea5xxxx
+```json
+{
+    "correlationId": "xxxxxxxx-80d5-46eb-a522-4bc4cea5xxxx",
+    "clientId": "xxxx",
+    "id": "xxxxxxxx-80d5-46eb-yyyy-4bc4cea5xxxx",
+    "tenantId": "xxxx",
+    "created": "2021-12-16T11:25:09.605+00:00",
+    "artifactId": "xxxxxxxx-yyyy-46eb-a522-4bc4cea5xxxx",
+    "artifactType": "Employee",
+    "status": "Succeeded",
+    "statusCode": 4,
+    "action": "Create",
+    "lastChange": "2021-12-16T11:25:13.593+00:00",
+    "validationResults": []
+}
+```
+
 ## Minimal set of mandatory fields for POST /employees/withPosition
 Mandatory fields can vary based on the data that you choose to provide when creting an employee. 
 You will always have to provide data on top level of Employee profile for the following properties:
