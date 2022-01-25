@@ -1,4 +1,29 @@
 # API changelog
+## 22.1.14.0 (2022-01-25)
+- Employee API now supports managing Accounting Dimensions for employee positions. Functionality typically is used to assign a Cost Unit, Project or other type of accoutning dimension to a position. 
+Accountin dimensions has a hierarchical structure:
+    - Dimension Definition - definition of the dimensions that acts as a parent and can contain multiple dimension values.
+    - Dimension Values - value of the dimension with it's defined parameters. 
+
+  Sample of assigned dimension definitiaion and value. 
+    ```
+    GET /employees/{employeeId}/positions/{positionId}
+    ...
+      "accountingDimensions": [
+        {
+          "dimension": "1",
+          "dimensionValues": [
+            {
+              "value": "2",
+              "activeStart": "2022-01-25"
+            }
+          ]
+        }
+      ],
+    ...
+    ```
+Accounting dimension objects are subject to time lines. Read more about how to work with time lines [here](https://github.com/visma-net/employee-public-api-docs/blob/main/FAQ.md#what-are-ojects-that-support-timelines).
+
 ## 21.10.26.0 (2021-10-20)
 - Support for partial responses via filtering for `employee` entity has been added. Depending on your use case and payload size, you can significantly reduce network bandwidth need by supporting filtering of returned entity fields. 
 
