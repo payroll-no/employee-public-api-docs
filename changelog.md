@@ -1,5 +1,5 @@
 # API changelog
-## 22.1.14.0 (2022-01-25)
+## 22.1.17.0 (2022-01-26)
 - Employee API now supports managing Accounting Dimensions for employee positions. Functionality typically is used to assign a Cost Unit, Project or other type of accoutning dimension to a position. 
 Accountin dimensions has a hierarchical structure:
     - Dimension Definition - definition of the dimensions that acts as a parent and can contain multiple dimension values.
