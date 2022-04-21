@@ -1,4 +1,7 @@
 # API changelog
+## 22.04.28  (2022-04-21)
+- API Specification version update to 1.0.4. Now when using Cursor to paginate results, query parameters have to be present when requesting next page. Change has been made to Cursor to prepare for release of service performance improvements. 
+
 ## 22.1.17.0 (2022-01-26)
 - Employee API now supports managing Accounting Dimensions for employee positions. Functionality typically is used to assign a Cost Unit, Project or other type of accoutning dimension to a position. 
 Accountin dimensions has a hierarchical structure:
