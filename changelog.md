@@ -1,4 +1,27 @@
 # API changelog
+## 22.08.31  (2022-08-18)
+- Added support to embed positoin resource for a single employee. Feature allows getting position data with a single GET operation on employee. 
+
+  Sample of getting position as embedded resource for an employee. 
+    ```
+    GET /employees/{employeeId}?embed=(positions)
+    Part of response:
+    ...
+      "_embedded": {
+        "positions": [
+            {
+                "id": "1000000-0000-0000-0000-000000000",
+                "tenantId": "1000000-0000-0000-0000-000000000",
+                "activeStart": "2022-01-01",
+                "employeeId": "{employeeId}",
+                "typeOfPosition": "Ordinary",
+                ...
+            }
+        ]
+    }
+    ...
+    ```
+
 ## 22.7.50.0  (2022-07-13)
 - Possibility to manage more information about employees have been added:
   - Maritime Workers - Maritime Employment, Type of Position has been added. Properties on Position entity
