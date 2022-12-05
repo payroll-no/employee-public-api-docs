@@ -1,4 +1,73 @@
 # API changelog
+## 22.12.1.0 (2022-12-05). API Specification version update to v1.1.0
+- Possibility to use hourly or yearly salary has been added to Visma.net Employee Management and Visma.net Employee API. 
+  With this change API Specification version is increased from **1.0.8** to **1.1.0**
+  New properties are introduced for Postion, `salaryInformation` object
+    - `contractSalaryType` - contract salary type indicating how salary will be calculated - hourly, monthly or yearly. 
+    - `hourlySalary` - value for hourly salary
+    - `yearlySalary` - value for yearly salary
+    - `monthlySalary` - value for yearly salary (field from previous versions)
+  Set `contractSalaryType` requires a value to be set for hourly/monthly/yearly salary property. In case `"contractSalaryType":"Hourly"` is used, `hourlySalary` value should be provided and so on. 
+  
+- **NB!** **Your API client needs to be updated!** Payroll administrators can submit changes either through client applications or via Visma.net Employee Management UI. In a case when Employee position data (specifically Contract Salary Type) is updated via Visma.net Employee Management UI and API client **has not been updated to v1.1.0 or later** to take advantage of new fields, following scenarios will be enforced:
+  - For `Position` updates, if `contractSalaryType` is not provided AND Contract Salary Type via UI has been set to "monthly" (default option), salary change will be executed as always
+  - For `Position` updates, if `contractSalaryType` is not provided AND Contract Salary Type via UI has been set to "hourly" or "yearly", salary update will be ignored (with a warning in the response). Other changes provided in the call payload will be validated and committed as always.
+  - For Employee creation with position, if `contractSalaryType` is not provided then `contractSalaryType` will be set to `monthly` by default and `monthlySalary` will be used as provided in payload.
+  - Job for position updates will contain a warning message that salary change has been omitted from the change. Changes to other position properties would be validated and committed. Validation result message will be provided in successful job result details with warning severity: "message: contractSalaryType has not been provided. Salary update was not performed.".
+  
+  
+  Clients implemented **before v1.1.0** (v1.0.8 and lower) that do not specify `contractSalaryType` are impacted by two corner cases:
+    - If the timeline contains any entry with a value of `Hourly` or `Yearly`, adding a timeline entry will be ignored with a successful job (with a warning in the response).
+    - If the timeline contains any entry with a value of `Hourly` or `Yearly`, editing that timeline entry will fail.
+  
+  Clients implemented **before v1.1.0** (v1.0.8 and lower) that return `contractSalaryType` as is are impacted similarly:
+    - If the timeline contains any entry with a value of `Hourly` or `Yearly`, adding a timeline entry will fail. 
+    - If the timeline contains any entry with a value of `Hourly` or `Yearly`, editing that timeline entry will fail.
+    - `hourlySalary` and `yearlySalary` must also be returned as is.
+
+  Sample of response containing new contract salary type and rate properties. 
+
+    GET /employees/{employeeId}/positions/{positionId}
+    Part of response:
+     ```json
+          ...
+          "salaryInformation": [
+              {
+                  "salaryType": "Period",
+                  "contractSalaryType": "monthly", // new property introduced with this release
+                  "monthlySalary": "10000", 
+                  "hourlySalary": "61.54", // new property introduced with this release
+                  "yearlySalary": "120000" // new property introduced with this release
+              }
+          ],
+          ...
+      ```
+
+  Sample of changing contract salary type to hourly. Only rate property being used, needs to have a value set. In case `"contractSalaryType":"Hourly"` is used, `hourlySalary` value should be provided. 
+
+    PUT /employees/{employeeId}/positions/{positionId}
+    Part of payload:
+     ```json
+          ...
+          "salaryInformation": [
+              { // current salary details
+                  "salaryType": "Period",
+                  "contractSalaryType": "monthly", // current contract salary type set on position
+                  "monthlySalary": "10000", // current salary amount set on position
+                  "hourlySalary": "61.54", // current calculated salary amount on position. Property will be ignored as contractSalaryType is set to monthly
+                  "yearlySalary": "120000", // current calculated salary amount on position. Property will be ignored as contractSalaryType is set to monthly
+                  "activeEnd": "2022-10-20" // set last day when this salary would be in effect
+              },
+              { // future salary details
+                  "salaryType": "Period",
+                  "contractSalaryType": "Hourly", // new contract salary type
+                  "hourlySalary": "65", // new hourly salary rate. other rates can be skipped as would be ignored
+                  "activeStart": "2022-10-20" // set when new contract salary  type and rate should come in effect
+              }
+          ],
+          ...
+      ```
+
 ## 22.08.31  (2022-08-18)
 - Added support to embed positoin resource for a single employee. Feature allows getting position data with a single GET operation on employee. 
 
