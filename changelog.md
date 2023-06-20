@@ -1,4 +1,45 @@
 # API changelog
+## 23.6.16.0 (2023-06-20). API Specification version update to v1.1.3
+We are excited to announce the release of the latest updates to Employee API. This update brings several enhancements and introduces a new URL with new endpoints, designed to provide you with critical information to efficiently work with entities managed through our API. Here are the key features and improvements:
+
+### New URL and Endpoints
+We have introduced a new URL that serves as the entry point for accessing the enhanced functionality: **https://api.employeecore.hrm.visma.net/**. This new URL provides access to a set of endpoints to better support work with Employees and Positions
+
+- **Tax Units**: Gets all tax units defined in a company
+    - Endpoint URL: `/taxUnits`
+    - HTTP Method: `GET`
+    - Returns all tax units defined in a company.
+
+- **Tax Unit**: Get tax unit defined in company by tax unit identifier.
+    - Endpoint URL: `/taxUnits/{id}`
+    - HTTP Method: `GET`
+    - Returns tax unit details in a company.
+
+- **Work Time Agreements**: Gets all work time agreements available for company.
+    - Endpoint URL: `/workTimeAgreements`
+    - HTTP Method: `GET`
+    - Returns all work time agreements available for company.
+
+- **Work Time Agreements**: Get tax unit defined in company by work time agreement identifier.
+    - Endpoint URL: `/workTimeAgreements/{id}`
+    - HTTP Method: `GET`
+    - Returns work time agreement details in a company.
+
+- **Tags**: Get all tags defined for a company.
+    - Endpoint URL: `/tags`
+    - HTTP Method: `GET`
+    - Returns all tags defined in a  company.
+
+- **Tags**: Get tag defined in company by tag identifier.
+    - Endpoint URL: `/tags/{id}`
+    - HTTP Method: `GET`
+    - Returns tag details defined in a company.
+
+### Upgrade Guide
+To start utilising the new functionality, please update your API integration to use the latest URL (**https://api.employeecore.hrm.visma.net/**) and incorporate the new endpoints as outlined above. 
+
+If you have any questions or need assistance during the transition, please reach out to our support team. We are here to help you make the most of the new features and ensure a smooth transition.
+
 ## 22.12.1.0 (2022-12-05). API Specification version update to v1.1.0
 - Possibility to use hourly or yearly salary has been added to Visma.net Employee Management and Visma.net Employee API. 
   With this change API Specification version is increased from **1.0.8** to **1.1.0**
