@@ -1,4 +1,26 @@
 # API changelog
+## 24.2.6.0 (2024-02-22). 
+With this update we are preparing for more streamlined management of certain references used in Employee and Position objects. 
+In Employee and Position objects, identifier representation for Tax Units, Work Time Agreements, Creditors, Unions, Pensions, Cars, Unions is changed to GUID (type is still string).
+Previously used values are backwards compatible, so you can continue using values that have been used before. 
+New GUID represented values can be looked up in extended API published on https://api.employeecore.hrm.visma.net/
+
+## 23.6.27.0 (2023-07-06). API Specification version update to v1.1.3
+In this release, we are excited to introduce a new endpoint to the Employee API, which allows users to access pension-related information in read-only mode. This endpoint provides valuable functionality for retrieving pension data, ensuring clients have access to up-to-date pension details.
+
+- **Pensions**: Gets all pensions defined in a company
+    - Endpoint URL: `/pensions`
+    - HTTP Method: `GET`
+    - Returns all pensions defined in a company.
+
+- **Individual Pension**: Gets individual pension defined in a company
+    - Endpoint URL: `/pensions/{id}`
+    - HTTP Method: `GET`
+    - Returns details for individual pension defined in a company.
+
+### Upgrade Guide
+To start utilising the new functionality, please update your API integration to use the latest URL (**https://api.employeecore.hrm.visma.net/**) and incorporate the new endpoints as outlined above. 
+
 ## 23.6.16.0 (2023-06-20). API Specification version update to v1.1.3
 We are excited to announce the release of the latest updates to Employee API. This update brings several enhancements and introduces a new URL with new endpoints, designed to provide you with critical information to efficiently work with entities managed through our API. Here are the key features and improvements:
 
