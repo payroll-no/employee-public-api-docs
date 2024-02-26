@@ -1,4 +1,83 @@
 # API changelog
+## Release of Employee API v2 (2024-02-26)
+We are excited to announce the release of API Version 2. This new version introduces a number of new properties and provides access to more critical information, enhancing the overall functionality and user experience.
+
+Employee API v2 now comes with a new Content-Type header, that will make future API updates safer and reduce possible issues while upgrading. Allowing clients to update to newer versions at client’s own pace.
+
+In this release, we have focused on expanding the data available to our users. New properties have been added across various endpoints, allowing for more comprehensive data retrieval and manipulation. 
+
+Please note that this version also includes breaking changes. These changes are necessary to improve the API's performance and capabilities, but they may require updates to your existing code. We recommend reviewing the detailed release notes carefully to understand the changes and how they might impact your application.
+
+We believe that these updates will significantly improve your interaction with our API, and we are committed to continuously enhancing its capabilities based on your feedback. Thank you for your continued support and usage of our API.
+
+**Summary**
+  - Update to Employee API Url
+  - Breaking changes: introduction of Content-Type to identify client supported API version
+  - New query parameters
+  - Schema updates: new properties supported to match data possible to manage via Employee Management UI
+  - Pagination - with version 2, pagination is enforced by default for all tenants. 
+  - New endpoints to retrieve and work with Tax Units, Creditors, Unions, Pensions, Cars. In Employee and Position objects, identifier representation is changed to GUID so can be queried using the new endpoints 
+
+**Server Updates**
+New default URI to be used with version 2: **https://api.employeecore.hrm.visma.net/v2/**
+
+**API Endpoint Changes**
+  - The content type for several endpoints has been updated to 'application/vnd.no.payroll.employee.V2.0+json'. This is a breaking change. Clients should be updated to parse this new content type. The new content type is used in the following endpoints:
+    - Employee
+      - GET /employees
+      - POST /employees/withPosition
+      - GET /employees/{employeeId}
+      - PUT /employees/{employeeId}
+      - GET /employees/jobs
+      - GET /employees/jobs/{id}
+    - Position
+      - GET /employees/{employeeId}/positions
+      - POST /employees/{employeeId}/positions
+      - GET /employees/{employeeId}/positions/{positionId}
+      - PUT /employees/{employeeId}/positions/{positionId}
+      - GET /employees/{employeeId}/positions/jobs
+      - GET /employees/{employeeId}/positions/jobs/{id}
+    - Additional query parameters have been added to the GET /employees endpoint. These include:
+      - page-size: parameter indicates the number of results that the client would like to see in the response.
+      - onlyActive: Set this to True to return only Employees with active positions. For example, GET /employees?onlyActive=True.
+      - manager: This is the EmployeeID assigned as a Manager. Only Employees who have a user created via Employee Management UI can be assigned as Manager. For example, GET /employees?manager=1234-5678-9101-1121.
+
+**Schema Updates**
+  - Employee `number` has been made optional. If Employee `number` is not provided on Employee creation, Employee number will be automatically assigned taking the next available number in the company. 
+  - `askForTaxInformation` property will be set to to true by default on new employee creation, even if not specified in the POST operation. Property is available under `taxInformation` in `employee`.
+  - New properties have been added to the `employee` schema:
+    - `manager`: Used to set a Manager for an employee. Property can be used as a query parameter to filter employees for this Manager. 
+    - `notes`: This field can be used to add any additional information about the employee.
+    - `additionalAccounts`: This field can be used to add any additional accounts associated with the employee.
+    - `creditorClaims`: This field can be used to add any creditor claims associated with the employee. 
+    - `taxAndContributionRules`: This field can be used to add any tax and contribution rules associated with the employee.
+    - `taxInformation`: Added fields to read and manage full inforamation in Tax & Claims Tab in Employee Management UI
+    - `payslipInEnglish`: This field can be used to specify if the payslip should be in English.
+    - `mainContact` property has been added to the 'relative' schema. This can be used to specify the main contact among the employee's relatives.
+    - `setOfAccount`- values for the purpose of dividing employee costs on different accounts, depending on what value the employee have
+  - The `typeOfPerson` and `manager` properties have been added to the 'position' schema. These can be used to specify the type of person in the position and the manager of the position respectively.
+
+**Pagination**
+Pagination is enforced by default for all tenants. 50 objects per page would be returned by default. Page size can be adjusted using page-size parameters. 
+
+**New Endpoints to get Organization Settings**
+New endpoints to retrieve and work with Tax Units, Work Time Agreements, Creditors, Unions, Pensions, Cars and Tags. In Employee and Position objects, identifier representation is changed to GUID so can be queried using the new endpoints 
+  - CompanySettings (https://api.employeecore.hrm.visma.net/v2/#/CompanySettings)
+  - TaxUnit (https://api.employeecore.hrm.visma.net/v2/#/TaxUnit)
+  - Cars (https://api.employeecore.hrm.visma.net/v2/#/Cars)
+  - WorkTimeAgreement (https://api.employeecore.hrm.visma.net/v2/#/WorkTimeAgreement)
+  - Pension (https://api.employeecore.hrm.visma.net/v2/#/Pension)
+  - Creditor (https://api.employeecore.hrm.visma.net/v2/#/Creditor). Get Creditor details used Employee creditorClaims schema
+  - Union (https://api.employeecore.hrm.visma.net/v2/#/Union)
+  - Tags (https://api.employeecore.hrm.visma.net/v2/#/Tags)
+
+ **Introducing the Sunset Header in Employee API v2**
+ *What is the Sunset Header?*
+The Sunset header is a standardized HTTP header that informs clients about the deprecation timeline of an API endpoint. With the Sunset header, clients can stay informed about upcoming changes and plan their migration strategies accordingly.
+
+*What Should Clients Do?*
+While the Sunset header is now available in Employee API v2, clients are encouraged to review their integration and ensure they're prepared to handle Sunset header changes when they occur.
+
 ## 24.2.6.0 (2024-02-22). 
 With this update we are preparing for more streamlined management of certain references used in Employee and Position objects. 
 In Employee and Position objects, identifier representation for Tax Units, Work Time Agreements, Creditors, Unions, Pensions, Cars, Unions is changed to GUID (type is still string).
