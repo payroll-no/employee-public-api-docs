@@ -72,6 +72,7 @@ New endpoints to retrieve and work with Tax Units, Work Time Agreements, Credito
   - Tags (https://api.employeecore.hrm.visma.net/v2/#/Tags)
 
  **Introducing the Sunset Header in Employee API v2**
+ 
 *What is the Sunset Header?*
 The Sunset header is a standardized HTTP header that informs clients about the deprecation timeline of an API endpoint. With the Sunset header, clients can stay informed about upcoming changes and plan their migration strategies accordingly.
 
