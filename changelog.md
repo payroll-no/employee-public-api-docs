@@ -1,4 +1,43 @@
 # API changelog
+## Announcement about sunsetting Employee API v1 (2024-10-22)
+We are announcing the **sunset date for Employee API v1, effective January  31st, 2025**.
+We would like that all clients that are still using Employee API v1 migrate to v2 of the API. 
+
+It has been nearly 8 months since the release of Employee API v2. New version introduces a number of new properties and provides access to more critical information, enhancing the overall functionality and user experience.
+In Employee API v2 we have focused on expanding the data available to our users. New properties have been added across various endpoints, allowing for more comprehensive data retrieval and manipulation.
+
+**There are breaking changes** when moving from Employee API v1 to Employee API v2. These changes are necessary to improve the API's performance and capabilities, changes require updates to your existing code. We recommend reviewing the detailed [release notes](https://github.com/payroll-no/employee-public-api-docs/blob/main/changelog.md#release-of-employee-api-v2-2024-02-26) carefully to understand the changes and how they might impact your application.
+
+### **Summary of introduced changes in Employee API v2**
+  - Breaking changes:
+    - Update to Employee API Url
+    - Introduction of Content-Type header `application/vnd.no.payroll.employee.V2.0+json` for better version control
+    - Pagination - with v2, pagination is enforced by default for all tenants.
+    - Schema updates: new properties supported to match data possible to manage via Employee Management UI
+  - New query parameters
+  - New endpoints to retrieve and work with Tax Units, Creditors, Unions, Pensions, Cars. In Employee and Position objects, identifier representation is changed to GUID so can be queried using the new endpoints
+
+### Documentation
+Updated API documentation for the new version: [Swagger documentation](https://api.employeecore.hrm.visma.net/v2/)
+
+[Employee API v2 Release notes](https://github.com/payroll-no/employee-public-api-docs/blob/main/changelog.md#release-of-employee-api-v2-2024-02-26)
+
+### FAQ section addressing common concerns and questions
+  - Are there breaking changes when moving to v2?
+    - Yes, there are breaking changes as documented in release notes. (mandatory header, schema updates, pagination by default)
+  - How can I test new versions?
+    - Update the client, url, make sure that pagination is supported, add the new header. Verify in the test company that the new client functions as expected. 
+  - Can I rollback after making a change?
+    - You can rollback safely while v1 is available (up until January 31st, 2025)
+  - Are there any changes to PUT/POST routine/workflow?
+    - There are no changes to workflow between the versions.
+  - Where can I find out information on the different versions?
+    - The change log is the best place to find information on the different versions and the changes they contain. We will highlight breaking changes in the change log clearly so you are aware of versions that may require you to make a change on your end.
+  - Will Employee API v1 lose any functionality prior to January 31st, 2025
+    - No, all existing functionality of API v1 will remain available till January 31st, 2025
+  - What will happen to API v1 after January  31st, 2025
+    - After the sunset date, API will become unavailable.
+
 ## Release of Employee API v2 (2024-02-26)
 We are excited to announce the release of API Version 2. This new version introduces a number of new properties and provides access to more critical information, enhancing the overall functionality and user experience.
 
