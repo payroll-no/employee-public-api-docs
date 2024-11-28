@@ -1,4 +1,17 @@
 # API changelog
+
+## Bugfix for Employee API (v1 & v2) (2024-11-28)
+We recently identified an error in our system where the shipping type values "nis" and "nos" were incorrectly described in our api documentation.
+We have corrected the issue. The correct mappings are:
+  - nis: Norwegian International Ship Register
+  - nor: Norwegian Ship Register
+
+Please check your API client to ensure it is functioning correctly after this change.
+If you encounter any issues, please do not hesitate to contact our support team.
+
+We apologize for any inconvenience this may have caused.
+
+
 ## Announcement about sunsetting Employee API v1 (2024-10-22)
 We are announcing the **sunset date for Employee API v1, effective January  31st, 2025**.
 We would like that all clients that are still using Employee API v1 migrate to v2 of the API. 
