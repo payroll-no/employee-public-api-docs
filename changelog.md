@@ -1,5 +1,15 @@
 # API changelog
 
+## Update for Employee API (v2) - filtering employees by lastChangedDate (2024-12-18)
+This update introduces a new filter parameter, fromLastChangedDate, to the GET Employees endpoint. This parameter allows you to retrieve a list of employees who have undergone changes since a specified date.
+
+The parameter accepts date string in basic format of ISO 8601 (e.g., 2023-11-22).
+
+**Example Usage**
+```
+GET /employees?fromLastChangedDate=2024-12-18
+```
+
 ## Bugfix for Employee API (v1 & v2) (2024-11-28)
 We recently identified an error in our system where the shipping type values "nis" and "nos" were incorrectly described in our api documentation.
 We have corrected the issue. The correct mappings are:
