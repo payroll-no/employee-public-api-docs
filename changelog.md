@@ -1,5 +1,29 @@
 # API changelog
 
+## New filter for Employee API v2 (2025-01-07)
+We are excited to announce a new feature in our API, designed to enhance the way you retrieve employee data. This update introduces a filter allowing you to fetch only those employees whose information has changed after a specified date. 
+This enhancement aims to streamline your data queries, minimize response payload, and increase efficiency in data management processes.
+Please check your API client to ensure it is functioning correctly after this change.
+
+### New Parameter: `fromLastChangedDate`
+- **Description:** Specifies the date after which the employee records have been modified.
+- **Parameter Type:** Date
+- **Format:** `YYYY-MM-DD` (e.g., `2025-01-01`)
+- **Usage Example:** To retrieve employee records updated after December 25, 2024, include the following in your API request: `GET /employees?fromLastChangedDate=2024-12-25`
+
+### Benefits
+- **Efficiency:** Reduce the volume of data transferred by focusing only on recent updates.
+- **Performance:** Decrease query execution times and response size, enhancing application performance.
+- **Relevance:** Ensure the data you work with is current to your operational needs.
+
+### Getting Started
+To start using this new feature, simply integrate the `fromLastChangedDate` parameter into your existing API queries as needed.
+
+### Feedback & Suppport
+Your feedback is invaluable to us. Please share your thoughts and suggestions on this new feature to help us continue improving our API offerings.
+If you encounter any issues, please do not hesitate to contact our support team.
+
+
 ## Bugfix for Employee API (v1 & v2) (2024-11-28)
 We recently identified an error in our system where the shipping type values "nis" and "nos" were incorrectly described in our api documentation.
 We have corrected the issue. The correct mappings are:
