@@ -1,5 +1,12 @@
 # API changelog
 
+## New values for `employmentForm` (2025-01-13)
+With the latest update to our API, we have incorporated changes to ensure compliance with new legal requirements for 2025. This update involves additions to `employmentForm` property values that our users should be aware of to maintain compatibility and compliance. New values added to `employmentForm` property
+- For 'Permanent employment and hired out' use **fastAnsattUtleid** as the value.
+- For 'Temporary employment and hired out' use **midlertidigAnsattUtleid** as the value.
+- For 'Temporary employment as on-call coverstaff' use **midlertidigAnsattSomTilkallingsvikar** as the value.
+
+
 ## New filter for Employee API v2 (2025-01-07)
 We are excited to announce a new feature in our API, designed to enhance the way you retrieve employee data. This update introduces a filter allowing you to fetch only those employees whose information has changed after a specified date. 
 This enhancement aims to streamline your data queries, minimize response payload, and increase efficiency in data management processes.
