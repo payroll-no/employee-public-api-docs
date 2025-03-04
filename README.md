@@ -16,7 +16,7 @@ Webhooks for Employee API is delivered through [Payroll Webhooks](https://oauth.
 
 #### Subscribing to Employee API Webhook:
 
-Subscribe to webhooks on Visma Developer Portal, [Payroll Webhooks](https://oauth.developers.visma.com/service-registry/webhooks/payroll-no-webhooks).
+Subscribe to webhooks on Visma Developer Portal, [Payroll Webhooks](https://oauth.developers.visma.com/service-registry/webhooks/payroll-no-webhooks).\
 To manage subscriptions to **Payroll Webhooks** programmatically, integrate with [Webhooks Subscriber API](https://oauth.developers.visma.com/service-registry/apistore/webhooks-subscriber)
 
 
