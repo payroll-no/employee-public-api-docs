@@ -1,5 +1,17 @@
 # API changelog
 
+## Webhooks for Employee API (2025-03-04)
+#### Overview
+We are excited to introduce the webhooks for Employee API, delivered through Payroll Webhooks. This webhook provides seamless integration with service to deliver real-time updates whenever an employee is created, updated, or deleted.
+
+For technical details and information on how to integrate, go to [README.md](https://github.com/payroll-no/employee-public-api-docs)
+
+#### Feedback & Suppport
+Your feedback is invaluable to us. Please share your thoughts and suggestions on this new feature to help us continue improving our API offerings.
+If you encounter any issues, please do not hesitate to contact our support team.
+
+
+
 ## New values for `employmentForm` (2025-01-13)
 With the latest update to our API, we have incorporated changes to ensure compliance with new legal requirements for 2025. This update involves additions to `employmentForm` property values that our users should be aware of to maintain compatibility and compliance. New values added to `employmentForm` property
 - For 'Permanent employment and hired out' use **fastAnsattUtleid** as the value.
