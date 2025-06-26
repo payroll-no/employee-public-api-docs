@@ -1,5 +1,23 @@
 # API changelog
 
+## API updates (2025-06-26)
+
+### New field "Skatt fra første krone" and API versioning
+With this release, we are introducing a new field `taxFrom1stNok` to the Employee entity, in `taxInformation` object. To enable read and write access to this field, you must update the `Content-Type` header in your requests to `application/vnd.no.payroll.employee.V2.1+json`.
+
+**How to adopt the new version:**
+1.  **Update the Content-Type header:** Change the `Content-Type` header in your API requests to `application/vnd.no.payroll.employee.V2.1+json`.
+2.  **Handling the new field:** Your application should be prepared to receive and, if necessary, send the `taxFrom1stNok` field.
+
+Clients using the older `application/vnd.no.payroll.employee.V2.0+json` content type will receive the `taxFrom1stNok` field as read-only.
+
+### New read-only field `gender`
+A new read-only field `gender` has been added to the Employee entity. This field will return the gender of the employee with possible values 'Male' or 'Female'.
+
+### New value for `typeOfPosition`
+In the Positions entity, a new value has been added for `typeOfPosition`.
+- Use 'Pension2' for VTA (ytelse uten arbeidsforhold), or permanent adapted work, a labor market measure for people who receive or will receive disability benefits and who need adaptation and follow-up. The measure may involve the employer receiving a subsidy, and it is a form of employment that is not a regular employment relationship.
+
 ## Webhooks for Employee API (2025-03-04)
 #### Overview
 We are excited to introduce the webhooks for Employee API, delivered through Payroll Webhooks. This webhook provides seamless integration with service to deliver real-time updates whenever an employee is created, updated, or deleted.
@@ -510,4 +528,5 @@ Accounting dimension objects are subject to time lines. Read more about how to w
   - GET /employees - parameter *includeDrafts*. Use to include Draft Employees in request results.
 - Description updates for API methods 
 
-Refer to [OpenAPI Specification](https://employeeapi.employeecore.hrm.visma.net/swag/index.html) for more details. 
+Refer to [OpenAPI Specification](https://api.employeecore.hrm.visma.net/v2/) for more details.
+
